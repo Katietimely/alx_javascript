@@ -1,8 +1,8 @@
 let object = {
     type: Object,
-    value: 89
+    value: 12
 };
 
-object.value = 12;
+object.value = 89;
 
 console.log(object)
