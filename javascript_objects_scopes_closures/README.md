@@ -1,0 +1,3 @@
+# project description
+this projects goes on to explain exactly what classes, instances, getters and setters are ....
+being linked with objects and closures.
