@@ -24,4 +24,4 @@ print() {
 }
 
     
-module.exports.Rectangle = Rectangle;
+module.exports = Rectangle;

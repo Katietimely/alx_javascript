@@ -7,4 +7,4 @@ constructor(w, h) {
    }
 }
 
-module.exports.Rectangle = Rectangle;
+module.exports = Rectangle;
