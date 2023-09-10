@@ -14,7 +14,7 @@ class Rectangle {
 }
 
 // instance of the class RECTANGLE to print in the form of x
-print()  ;{
+function print()  {
     for (let i = 0;i < this.height; i++) {
         let row = "";
         for (let j = 0; j < this.width; j++) {
@@ -24,11 +24,11 @@ print()  ;{
     }
 }
 
-rotate()  ;{
+function rotate()  {
     [this.width, this.height] = [this.height, this.weight];
 }
 
-double() ;{
+function double() ;{
     this.width *= 2;
     this.height *= 2;
 }
