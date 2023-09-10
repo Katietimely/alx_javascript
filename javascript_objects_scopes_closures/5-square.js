@@ -1,13 +1,12 @@
-#!/usr/bin/node
-// importing a class of rectangle
-const { Rectangle } = require("./4-rectangle");
+// create a class Square that inherits from Rectangle in "4-rectangle.js"
 
-// inheriting a class of rectangle to become a class of square with a property of size
+const Rectangle = require("./4-rectangle");
+
 class Square extends Rectangle {
-    constructor(size) {
-        super (size, size);
-    }
-
+  constructor(size) {
+    super(size, size);
+  }
 }
 
+//create a module for export
 module.exports = Square;
