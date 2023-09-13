@@ -8,7 +8,7 @@ req(url, (error, response, body) => {
         const tasks = JSON.parse(body);
         const completedTasks = {};
 
-        tasks.array.forEach(task => {
+        for (task of tasks) {
           if (task.completed) {
             if (completedTasks[task.userId]) {
                 completedTasks[task.userId]++;
@@ -16,7 +16,7 @@ req(url, (error, response, body) => {
                 completedTasks[task.userId] = 1;
             }
           }
-        });
+        }
 
         console.log(completedTasks);
     } else {
