@@ -10,7 +10,7 @@ req(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
         fs.writeFile(filepath, body, { encoding: 'utf-8' }, (err) => {
             if (err) throw err;
-            console.log(`File saved to ${filePath}`);
+            console.log(`File saved to ${filepath}`);
         });
     } else {
         console.error(`Error fetching URL: ${error}`);
