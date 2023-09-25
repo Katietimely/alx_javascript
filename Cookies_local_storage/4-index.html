@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <input type="text" value="firstname" id="firstname">
+    <input type="text" value="email" id="email">
+    <button onclick="setCookies()">Log me in</button>
+
+    <div id="cookiesContainer">
+        <button onclick="showCookies()">Show the cookies</button>
+    </div>
+
+    <div id="loginForm" class="login-form">
+        <h2>Login</h2>
+        <input type="text" placeholder="Username" id="firstname">
+        <input type="text" placeholder="Password" id="email">
+        <button onclick="setCookies()">Log me in</button>
+
+    </div>
+
+    <div id="welcomeMessage"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/src/js.cookie.min.js"></script>
+    <script src="src/index.js">
+
+
+    function setCookies() {
+        const firstname = document.getElementById("firstname").value;
+        const email = document.getElementById("email").value;
+
+        // expires in 10 days
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 10);
+
+        
+
+        document.cookie = `firstname=${firstname}; expires=${expirationDate.toUTCString()}`;
+        document.cookie =  `email=${email}; expires=${expirationDate.toUTCString()}`;
+        showWelcomeMessageOrForm();
+     }
+
+
+     function getCookies(name) {
+        const cookies = document.cookie.split("; ");
+
+        for (const cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+
+            if (cookieName === name) {
+                return cookieValue;
+            }
+        }
+
+        return '';
+     }
+
+     // modifying the showcookies function
+    function showCookies() {
+        const cookies = document.cookie.split("; ");
+        
+        const emailValue = getCookies('email');
+        const firstnameValue = getCookies('firstname');
+
+        const cookiesContainer = document.getElementById('cookiesContainer');
+        const  paragraph = document.createElement("p");
+
+
+        paragraph.textContent = `Email: ${emailValue} - Firstname:  ${firstnameValue}`;
+
+
+        cookiesContainer.innerHTML = 'Cookies:<br>';
+        cookiesContainer.appendChild(paragraph);
+     }
+
+
+     function showForm() {
+           const welcomeMessage = document.getElementById('welcomeMessage');
+           welcomeMessage.innerHTML = '';
+
+           const loginForm = document.getElementById('loginForm');
+           loginForm.style.display = 'block';
+     }
+
+
+     function hideForm() {
+        const loginForm = document.getElementById('loginForm');
+        loginForm.style.display = 'none';
+     }
+
+     function deleteCookiesAndShowForm() {
+        document.cookie = 'firstname=; expires=Thursday, 15  October 2023 00:00:00 UTC;';
+        document.cookie = 'email=; expires=Thursday, 15 October 2023 00:00:00  UTC;';
+        showForm();
+     }
+
+
+     function showWelcomeMessageOrForm() {
+        const firstName = getCookies('firstname');
+
+        if (firstName) {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            welcomeMessage.innerHTML = '';
+
+            const welcomeHeader = document.createElement('h1');
+            welcomeHeader.textContent = `Welcome ${firstName}`;
+
+            const logoutLink = document.createElement('a');
+            logoutLink.textContent = '(logout)';
+            logoutLink.style.fontWeight = 'normal';
+            logoutLink.style.fontStyle = 'italic';
+            logoutLink.style.marginLeft = '10px';
+            logoutLink.href = '#';
+            logoutLink.onclick = function() {
+                deleteCookiesAndShowForm();
+                welcomeMessage.style.display = 'none';
+                showForm();
+            };
+
+            welcomeHeader.appendChild(logoutLink);
+            welcomeMessage.appendChild(welcomeHeader);
+        } else {
+            showForm();
+        }
+     }
+    </script>
+</body>
+</html>

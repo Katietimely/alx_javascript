@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <input type="text" value="firstname" id="firstname">
+    <input type="text" value="email" id="email">
+    <button onclick="setCookies()">Log me in</button>
+
+    <div>
+        <h1>Cookies</h1>
+        <button onclick="showCookies()">Show the cookies</button>
+    </div>
+    <script src="src/index.js">
+
+
+    function setCookies() {
+        const firstname = document.getElementById("firstname").value;
+        const email = document.getElementById("email").value;
+
+        
+
+        document.cookie = "firstname=" + firstname + ";";
+        document.cookie = "email=" + email + ";";
+     }
+
+    function showCookies() {
+        const cookies = document.cookie.split(";");
+
+
+        let paragraph = document.createElement("p");
+        p.innerHTML = "Cookies: ";
+
+
+        for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+          if (cookie.indexOf("firstname") == 0) {
+            paragraph.innerHTML += cookie.substring("firstname".length + 1);
+          } else if (cookie.indexOf("email") == 0) {
+            paragraph.innerHTML += cookie.substring("email".length + 1);
+          }
+
+        }
+
+        document.body.appendChild(paragraph);
+     }
+
+     
+    </script>
+</body>
+</html>
