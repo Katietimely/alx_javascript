@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating and Removing Elements</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        // getting the id for easier manipulation
+        let container = document.getElementById('container');
+        
+       // creating a new paragraph on the webpage
+       let paragraph = document.createElement('p');
+       paragraph.textContent = 'New paragraph';
+       // append the child into the div parent
+       container.appendChild(paragraph);
+
+       // create a button
+       const buttoncon = document.createElement('button');
+       // append into the body of the div container
+       container.appendChild(buttoncon);
+       let isParagraphVisible = true;
+
+       // adding eventlistener so when you click , it either displays the paragraph or not
+       buttoncon.addEventListener('click', () => {
+        if (isParagraphVisible) {
+            paragraph.style.display = 'none';
+        } else {
+            paragraph.style.display = 'block';
+        }
+        isParagraphVisible = !isParagraphVisible;
+       });
+    
+
+    </script>
+</body>
+</html>
